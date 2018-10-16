@@ -9,7 +9,7 @@
 1. Submit a Pull Request back to the assignment repo
 1. Paste a link to your Pull Request (not your fork!) on Canvas and submit
 
-For this assignment, you will build [hangman](http://www.playhangman.com/PH.asp?g=SCRABBLE7&l=D)  
+For this assignment, you will build [hangman](http://www.justhangman.com/)  
 
 ## Requirements 
 
