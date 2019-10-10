@@ -31,48 +31,37 @@ var dashes = ""
 var randomWord: [Character] = Array(allTheWords.randomElement() ?? "cat")
 var hiddenWord: [Character] = Array(repeating: "_", count: randomWord.count)
 
-while hiddenWord != randomWord {
+startloop: while hiddenWord != randomWord {
+    print("enter a single character  \(String(hiddenWord))")
+    let userInput  = Character(readLine() ?? "")
+    var indicies: Set<Int> = []
     
-
-
-print("enter a single character  \(String(hiddenWord))")
- 
-let userInput  = Character(readLine() ?? "")
-
-
-var indicies: Set<Int> = []
-
-    for (index, char) in randomWord.enumerated(){
+    for (index, char) in randomWord.enumerated(){ // 5
         if userInput == char {
             indicies.insert(index)
-        } else if userInput != char {
-            strikes += 1
-        } //==== up until youre good
-        if strikes == 6 {
-            print("game over")
-            break
         }
-        
+    }
+    for (index, _) in hiddenWord.enumerated(){
+        if indicies.contains(index){
+            hiddenWord[index] = userInput
+        }
+    }
+    
+    if !randomWord.contains(userInput) { // incorrect character
+        strikes += 1
+        if strikes == 6 {
+            print("You lost this round")
+            break startloop
+        }
     }
 
- 
-for (index, _) in hiddenWord.enumerated(){
-    if indicies.contains(index){
-        hiddenWord[index] = userInput
-        
-    }
+    print(String(hiddenWord))
 }
-    displayWord = ""
-for char in hiddenWord {
-    displayWord += char.description
-}
-print(displayWord)
-}
-print(" you win ")
+print("Thanks for playing")
 //for (index, letter ) in randomWord.enumerated(){
 //if userInput.contains(letter){
 //       .insert()
-           
+
 //
 //    }
 
